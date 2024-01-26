@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: legalogin-service
+spec:
+  selector:
+    name: legallogin
+  type: ClusterIP
+  ports:
+  - port: 9090
+    targetPort: 9090
+    nodePort: 3000

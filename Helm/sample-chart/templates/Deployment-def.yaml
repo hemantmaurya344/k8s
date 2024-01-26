@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-test
+  labels:
+    app: test
+    tier: Backend
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      tier: Backend
+  template:
+    metadata:
+      name: legallogin
+      labels:
+        app: legallogin
+        tier: Backend
+    spec:
+      containers:
+      - name: sample
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        resources:
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        ports:
+        - containerPort: 9090
+

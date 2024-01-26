@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test
+  labels:
+    app: test
+    tier: Backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: Backend
+  template:
+    metadata:
+      name: legallogin
+      labels:
+        app: legallogin
+        tier: Backend
+    spec:
+      containers:
+      - name: sample
+        image: registry.hub.docker.com/hemantmaurya344/sample:v1
+        resources:
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        ports:
+        - containerPort: 9090
+

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: legallogin
+  labels:
+    app: legallogin
+    tier: Backend
+spec:
+  containers:
+  - name: sample
+    image: registry.hub.docker.com/hemantmaurya344/sample:v1
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+    - containerPort: 9090

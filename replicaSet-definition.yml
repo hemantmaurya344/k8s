@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: test-replica-set
+  labels:
+    app: test
+    tier: Backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: Backend
+  template:
+    metadata:
+      name: legallogin
+      labels:
+        app: legallogin
+        tier: Backend
+    spec:
+      containers:
+      - name: sample
+        image: registry.hub.docker.com/hemantmaurya344/sample:v1
+        ports:
+        - containerPort: 9090
+
